@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvwBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_24dp"
+        android:layout_marginTop="@dimen/main_18dp"
+        android:layout_marginBottom="@dimen/main_18dp"
+        android:gravity="center"
+        android:text="@string/back_sign"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/main_30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvwIndicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_8dp"
+        android:layout_marginEnd="@dimen/main_8dp"
+        android:gravity="center"
+        android:textColor="#B4B4B4"
+        android:textSize="@dimen/main_12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvwNext"
+        app:layout_constraintStart_toEndOf="@id/tvwBack"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text=" ● ● ● ● ● ● " />
+
+    <TextView
+        android:id="@+id/tvwNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/main_18dp"
+        android:layout_marginEnd="@dimen/main_24dp"
+        android:layout_marginBottom="@dimen/main_18dp"
+        android:gravity="center"
+        android:text="@string/next_sign"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/main_30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
