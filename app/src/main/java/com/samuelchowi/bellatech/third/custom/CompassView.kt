@@ -28,9 +28,6 @@ class CompassView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         bitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_compass_demo).scale(dim, dim, false)
     }
 
-    /**
-     * {@inheritDoc}
-     */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
@@ -39,42 +36,23 @@ class CompassView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         setMeasuredDimension(parentWidth, parentHeight)
     }
 
-    /**
-     * {@inheritDoc}
-     */
     override fun onDraw(canvas: Canvas?) {
-        if (canvas == null) throw NullPointerException()
+        if (canvas == null) return
 
         if (!drawing.compareAndSet(false, true)) return
 
         val bearing = orientation
 
-        val bitmapWidth = bitmap!!.width
-        val bitmapHeight = bitmap!!.height
-
-        val canvasWidth = canvas.width
-        val canvasHeight = canvas.height
-        if (bitmap!!.width > canvasWidth || bitmap!!.height > canvasHeight) {
-            // Resize the bitmap to the size of the canvas
-            bitmap = Bitmap.createScaledBitmap(bitmap!!, (bitmapWidth * .9).toInt(), (bitmapHeight * .9).toInt(), true)
-        }
-
         val bitmapX = bitmap!!.width / 2F
         val bitmapY = bitmap!!.height / 2F
 
-        val parentX = parentWidth / 2
-        val parentY = parentHeight / 2
-
-        val centerX = parentX - bitmapX
-        val centerY = parentY - bitmapY
+        val centerX = (parentWidth / 2) - bitmapX
+        val centerY = (parentHeight / 2) - bitmapY
 
         val rotation = 360 - bearing
 
         _matrix!!.reset()
-        // Rotate the bitmap around it's center point so it's always pointing
-        // north
         _matrix!!.setRotate(rotation.toFloat(), bitmapX, bitmapY)
-        // Move the bitmap to the center of the canvas
         _matrix!!.postTranslate(centerX, centerY)
 
         canvas.drawBitmap(bitmap!!, _matrix!!, paint)
