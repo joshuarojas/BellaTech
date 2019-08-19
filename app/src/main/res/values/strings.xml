@@ -2,4 +2,7 @@
     <string name="app_name">BellaTech</string>
     <string name="back_sign"><![CDATA[<]]></string>
     <string name="next_sign"><![CDATA[>]]></string>
+    <string name="sensor_text">Shake it!\nShake sensor working in here :D</string>
+    <string name="shake_next">Siguiente!</string>
+    <string name="compass_text">Brujula</string>
 </resources>
